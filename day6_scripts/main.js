@@ -1,5 +1,31 @@
 const bbCore = require('sdk');
 
+
+
+exports.present_template = function(data, callback){
+
+ 
+  bbCore.getCompany().then( (company) =>
+  {
+    
+        
+      company.$post('liquid_renderer', {entity: "company", id: company.id, named_template: "presents.6geese"}).then( (res) => {
+        
+         callback(null, {
+           proxy: true,
+            headers: {
+              "Content-Type": "text/html; charset=UTF-8"
+            },
+            response: res.liquid_render
+         });
+        console.log(res);
+      }, (err) => console.log(err));
+
+    console.log(company);
+  })
+}
+
+
 exports.present = function(data, callback){
 
   bbCore.getCompany().then( (company) =>
@@ -31,36 +57,11 @@ exports.present = function(data, callback){
 
 
 
-exports.present_template = function(data, callback){
-
- 
-  bbCore.getCompany().then( (company) =>
-  {
-    
-        
-      company.$post('liquid_renderer', {entity: "company", id: company.id, named_template: "presents.6geese"}).then( (res) => {
-        
-         callback(null, {
-           proxy: true,
-            headers: {
-              "Content-Type": "text/html; charset=UTF-8"
-            },
-            response: res.liquid_render
-         });
-        console.log(res);
-      }, (err) => console.log(err));
-
-    console.log(company);
-  })
-}
-
-
 
 exports.message = function(data, callback){
 
  
-  bbCore.getCompany().then( (company) =>
-  {
+  bbCore.getCompany().then( (company) => {
     const post_data = {
       entity: 'client',
       id: data.client_id,
@@ -70,7 +71,7 @@ exports.message = function(data, callback){
       },
       body: {
         body_type: "liquid",
-        value: "Hi there, here are you 6 Geese" +
+        value: "Hi there {{client.name}}, here are you 6 Geese" +
          "{% for i in (1..6) %}" +
         "{{i}}. <img src='https://cdn.travelpulse.com/images/99999999-9999-9999-9999-999999999999/97d5f9be-c371-e411-95bd-0050568e420d/630x355.jpg' style='width:100px;margin:2px'/>" +
         "{% endfor  %}"
@@ -80,7 +81,7 @@ exports.message = function(data, callback){
       sender: "truelove@bookingbug.com"
     }
 
-    company.$post('communication', {}, post_data).then( (res) => {
+    company.$post('communications', {}, post_data).then( (res) => {
         
        callback(null, {
          proxy: true,

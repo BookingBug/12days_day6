@@ -30,7 +30,7 @@
       "name":"Message",
       "description":"Send the client a message ",
       "type":"AdminScript",
-      "actions": ["Get"],
+      "actions": ["Get", "Post"],
       "log_type": "Tail",
       "enabled": true,
       "handler": "message"

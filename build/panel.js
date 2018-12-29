@@ -1,1 +1,199 @@
-!function(e){var t={};function n(r){if(t[r])return t[r].exports;var i=t[r]={i:r,l:!1,exports:{}};return e[r].call(i.exports,i,i.exports,n),i.l=!0,i.exports}n.m=e,n.c=t,n.d=function(e,t,r){n.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:r})},n.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},n.t=function(e,t){if(1&t&&(e=n(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var r=Object.create(null);if(n.r(r),Object.defineProperty(r,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var i in e)n.d(r,i,function(t){return e[t]}.bind(null,i));return r},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,"a",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p="./",n(n.s=1)}([function(e,t){var n,r=window.angular;try{n=r.module(["ng"])}catch(e){n=r.module("ng",[])}var i='<h3>{{$ctrl.client.name}}\'s Geese</h3>\n<br/>\n<a class="btn btn-primary" ng-click="$ctrl.email_geese()">Email about geese</a>\n<br/>\n',o="day6/geese.html",a=r.element(window.document).injector();a?a.get("$templateCache").put(o,i):n.run(["$templateCache",function(e){e.put(o,i)}]),t.id=o,t.template=i},function(e,t,n){e.exports=n(2)},function(e,t,n){"use strict";n(3),n(0)},function(e,t,n){"use strict";var r=o(n(0)),i=o(n(4));function o(e){return e&&e.__esModule?e:{default:e}}i.default.addPage("Clients","geese",{style:"tab",layout:[[{type:"bb-geese-panel",width:12,index:0,panel_params:{}}]]}),i.default.addNamedTab("client_profile",{name:"Geese",path:'.views({view: "geese"})',position:-1});var a=function(){function e(t){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,e),this.company=t.getCompany(),this.client=this.filter.client}return e.prototype.email_geese=function(){var e=this;this.company.$get("apps",{app_name:"day6"}).then(function(t){var n={client_id:e.client.id,client_email:e.client.email};t.$post("invoke_admin_script",{name:"Message"},n).then(function(e){console.log(e)})})},e}(),l={templateUrl:r.default.id,controller:a,scope:!0,bindings:{filter:"<"}};angular.module("BBAdminDashboard").component("bbGeesePanel",l)},function(e,t){e.exports=bbConfig}]);
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "./";
+/******/
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ (function(module, exports) {
+
+var angular=window.angular,ngModule;
+try {ngModule=angular.module(["ng"])}
+catch(e){ngModule=angular.module("ng",[])}
+var v1="<h3>{{$ctrl.client.name}}'s Geese</h3>\n<br/>\n<a class=\"btn btn-primary\" ng-click=\"$ctrl.email_geese()\">Email about geese</a>\n<br/>\n";
+var id1="day6/geese.html";
+var inj=angular.element(window.document).injector();
+if(inj){inj.get("$templateCache").put(id1,v1);}
+else{ngModule.run(["$templateCache",function(c){c.put(id1,v1)}]);}
+exports.id=id1;
+exports.template=v1;
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(2);
+
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+__webpack_require__(3);
+
+__webpack_require__(0);
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _geese = __webpack_require__(0);
+
+var _geese2 = _interopRequireDefault(_geese);
+
+var _bookingbugConfiguratorJs = __webpack_require__(4);
+
+var _bookingbugConfiguratorJs2 = _interopRequireDefault(_bookingbugConfiguratorJs);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+// aa new page to the "Clients" sections of the studio app
+_bookingbugConfiguratorJs2.default.addPage('Clients', 'geese', {
+    style: 'tab',
+    layout: [[{
+        type: 'bb-geese-panel',
+        width: 12,
+        index: 0,
+        panel_params: {}
+    }]]
+});
+
+// A a new tab to the "client profile" set of tabs - that is set to shwo the new page
+_bookingbugConfiguratorJs2.default.addNamedTab('client_profile', {
+    name: 'Geese',
+    path: '.views({view: "geese"})',
+    position: -1
+});
+
+var GeeseCtrl = function () {
+    function GeeseCtrl(bbAuthorisation) {
+        _classCallCheck(this, GeeseCtrl);
+
+        this.company = bbAuthorisation.getCompany();
+        this.client = this.filter.client;
+    }
+
+    GeeseCtrl.prototype.email_geese = function email_geese() {
+        var _this = this;
+
+        this.company.$get('apps', { app_name: 'day6' }).then(function (app) {
+
+            var data = { client_id: _this.client.id, client_email: _this.client.email };
+
+            app.$post('invoke_admin_script', { name: 'Message' }, data).then(function (res) {
+                console.log(res);
+            });
+        });
+    };
+
+    return GeeseCtrl;
+}();
+
+var geesePanel = {
+    templateUrl: _geese2.default.id,
+    controller: GeeseCtrl,
+    scope: true,
+    bindings: {
+        filter: '<'
+    }
+};
+
+angular.module('BBAdminDashboard').component('bbGeesePanel', geesePanel);
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports) {
+
+module.exports = bbConfig;
+
+/***/ })
+/******/ ]);
