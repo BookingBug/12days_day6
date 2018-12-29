@@ -1,0 +1,39 @@
+{
+  "version": "0.1",
+  "name": "Day6Scripts",
+  "description": "Scripts for Day 6 of Lessons",
+  "platform": "nodejs8.10",
+  "created_at": "2018-10-24",
+  "updated_at": "2018-10-24",
+  "enabled": true,
+  "scripts":
+  [
+    {
+      "name":"Present",
+      "description":"Called  to see the 6 geese",
+      "type":"PublicScript",
+      "actions": ["Get"],
+      "log_type": "Tail",
+      "enabled": true,
+      "handler": "present"
+    },
+    {
+      "name":"PresentTemplate",
+      "description":"Called  to see the 6 geese",
+      "type":"PublicScript",
+      "actions": ["Get"],
+      "log_type": "Tail",
+      "enabled": true,
+      "handler": "present_template"
+    },
+    {
+      "name":"Message",
+      "description":"Send the client a message ",
+      "type":"AdminScript",
+      "actions": ["Get"],
+      "log_type": "Tail",
+      "enabled": true,
+      "handler": "message"
+    }   
+  ]
+}
