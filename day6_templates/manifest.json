@@ -5,8 +5,7 @@
       "file": "6geese.html",
       "key": "6geese",
       "name": "6 Geese a laying",
-      "description": "A sample template for the 12 days of Khufu",
-      "drops": ["client", "company"]
+      "description": "A sample template for the 12 days of Khufu"
     }
   ]
 }

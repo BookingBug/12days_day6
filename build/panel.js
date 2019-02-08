@@ -81,30 +81,24 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-var angular=window.angular,ngModule;
-try {ngModule=angular.module(["ng"])}
-catch(e){ngModule=angular.module("ng",[])}
-var v1="<h3>{{$ctrl.client.name}}'s Geese</h3>\n<br/>\n<a class=\"btn btn-primary\" ng-click=\"$ctrl.email_geese()\">Email about geese</a>\n<br/>\n";
-var id1="day6/geese.html";
-var inj=angular.element(window.document).injector();
-if(inj){inj.get("$templateCache").put(id1,v1);}
-else{ngModule.run(["$templateCache",function(c){c.put(id1,v1)}]);}
-exports.id=id1;
-exports.template=v1;
+module.exports = __webpack_require__(1);
+
 
 /***/ }),
 /* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(2);
+"use strict";
 
+
+__webpack_require__(2);
 
 /***/ }),
 /* 2 */
@@ -113,18 +107,7 @@ module.exports = __webpack_require__(2);
 "use strict";
 
 
-__webpack_require__(3);
-
-__webpack_require__(0);
-
-/***/ }),
-/* 3 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _geese = __webpack_require__(0);
+var _geese = __webpack_require__(3);
 
 var _geese2 = _interopRequireDefault(_geese);
 
@@ -134,9 +117,11 @@ var _bookingbugConfiguratorJs2 = _interopRequireDefault(_bookingbugConfiguratorJ
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-// aa new page to the "Clients" sections of the studio app
+// add new page to the "Clients" sections of the studio app
 _bookingbugConfiguratorJs2.default.addPage('Clients', 'geese', {
     style: 'tab',
     layout: [[{
@@ -162,18 +147,39 @@ var GeeseCtrl = function () {
         this.client = this.filter.client;
     }
 
-    GeeseCtrl.prototype.email_geese = function email_geese() {
-        var _this = this;
+    GeeseCtrl.prototype.email_geese = function () {
+        var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+            var app, data, result;
+            return regeneratorRuntime.wrap(function _callee$(_context) {
+                while (1) {
+                    switch (_context.prev = _context.next) {
+                        case 0:
+                            _context.next = 2;
+                            return this.company.$get('apps', { app_name: 'day6' });
 
-        this.company.$get('apps', { app_name: 'day6' }).then(function (app) {
+                        case 2:
+                            app = _context.sent;
+                            data = { client_id: this.client.id, client_email: this.client.email };
+                            _context.next = 6;
+                            return app.$post('admin_script', { name: 'Message' }, data);
 
-            var data = { client_id: _this.client.id, client_email: _this.client.email };
+                        case 6:
+                            result = _context.sent;
 
-            app.$post('invoke_admin_script', { name: 'Message' }, data).then(function (res) {
-                console.log(res);
-            });
-        });
-    };
+                        case 7:
+                        case 'end':
+                            return _context.stop();
+                    }
+                }
+            }, _callee, this);
+        }));
+
+        function email_geese() {
+            return _ref.apply(this, arguments);
+        }
+
+        return email_geese;
+    }();
 
     return GeeseCtrl;
 }();
@@ -188,6 +194,21 @@ var geesePanel = {
 };
 
 angular.module('BBAdminDashboard').component('bbGeesePanel', geesePanel);
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports) {
+
+var angular=window.angular,ngModule;
+try {ngModule=angular.module(["ng"])}
+catch(e){ngModule=angular.module("ng",[])}
+var v1="<h3>{{$ctrl.client.name}}'s Geese</h3>\n<br/>\n<a class=\"btn btn-primary\" ng-click=\"$ctrl.email_geese()\">Email about geese</a>\n<br/>\n";
+var id1="day6/geese.html";
+var inj=angular.element(window.document).injector();
+if(inj){inj.get("$templateCache").put(id1,v1);}
+else{ngModule.run(["$templateCache",function(c){c.put(id1,v1)}]);}
+exports.id=id1;
+exports.template=v1;
 
 /***/ }),
 /* 4 */

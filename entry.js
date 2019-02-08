@@ -1,1 +1,1 @@
-import './day6_panel/**'
+import './day6_panel/**/!(*.spec).js'

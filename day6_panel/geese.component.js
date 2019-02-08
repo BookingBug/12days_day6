@@ -3,7 +3,7 @@ import template from './geese.html';
 import Configurator from 'bookingbug-configurator-js';
 
 
-// aa new page to the "Clients" sections of the studio app
+// add new page to the "Clients" sections of the studio app
 Configurator.addPage('Clients', 'geese', { 
     style: 'tab',
     layout: [
@@ -33,15 +33,13 @@ class GeeseCtrl {
         this.client = this.filter.client;
     }
 
-    email_geese(){
-        this.company.$get('apps', {app_name: 'day6'}).then( (app) => {
+    async email_geese(){
+        const app = await this.company.$get('apps', {app_name: 'day6'});
 
-            const data = {client_id: this.client.id, client_email: this.client.email};
+        const data = {client_id: this.client.id, client_email: this.client.email};
 
-            app.$post('invoke_admin_script', {name: 'Message'}, data).then( (res) => {
-                console.log(res);
-            });
-        })
+        const result = await app.$post('admin_script', {name: 'Message'}, data);
+
     }
 }
 
